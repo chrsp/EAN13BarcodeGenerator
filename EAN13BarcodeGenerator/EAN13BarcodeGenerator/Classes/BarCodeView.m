@@ -48,6 +48,7 @@ static const NSInteger kTotlaBarCodeLength = 113; //never change this
     self.font = [UIFont systemFontOfSize:15];
     self.shouldShowNumbers = YES;
     self.lettersSpacing = 1;
+    self.isValid = NO;
 }
 -(void)setBarCode:(NSString *)newbarCode
 {
@@ -55,6 +56,7 @@ static const NSInteger kTotlaBarCodeLength = 113; //never change this
     {
         _barCode = newbarCode;
         validBarCode = isValidBarCode(_barCode);
+        self.isValid = isValidBarCode(_barCode);
         if (validBarCode)
         {
             CalculateBarCodeEAN13(_barCode, binaryCode);
@@ -77,16 +79,16 @@ static const NSInteger kTotlaBarCodeLength = 113; //never change this
 //    draw error
         [self.bgColor set];
         CGContextFillRect(context, rect);
-        
-        UIFont* font = [UIFont systemFontOfSize:15];
-        UIColor* textColor = [UIColor redColor];
-        
-        NSDictionary* stringAttrs = @{ NSFontAttributeName : font,
-                                       NSForegroundColorAttributeName : textColor };
-        NSAttributedString* attrStr = [[NSAttributedString alloc]
-                                       initWithString:@"Invalid barcode!" attributes:stringAttrs];
-        
-        [attrStr drawAtPoint:CGPointMake(3.f, rect.size.height/2-20)];
+//
+//        UIFont* font = [UIFont systemFontOfSize:15];
+//        UIColor* textColor = [UIColor redColor];
+//
+//        NSDictionary* stringAttrs = @{ NSFontAttributeName : font,
+//                                       NSForegroundColorAttributeName : textColor };
+//        NSAttributedString* attrStr = [[NSAttributedString alloc]
+//                                       initWithString:@"" attributes:stringAttrs];
+//
+//        [attrStr drawAtPoint:CGPointMake(3.f, rect.size.height/2-20)];
         return;
     }
     

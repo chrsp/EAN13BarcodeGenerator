@@ -19,6 +19,7 @@
 //this coeficient allows you to fit digits into width of your barcode view
 @property (nonatomic, assign) CGFloat lettersSpacing;
 @property (nonatomic, assign) BOOL shouldShowNumbers; //default YES
+@property (nonatomic, assign) BOOL isValid; //default NO
 
 
 @end
